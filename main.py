@@ -4,6 +4,7 @@ from typing import Annotated
 import uvicorn
 
 app = FastAPI(root_path="/api/v1")
+app.openapi_version = "3.0.2"
 
 wkItems = []
 
@@ -14,6 +15,7 @@ class Customer_In(BaseModel):
     email: str
 
 
+    '''
     model_config = {
         "json_schema_extra": {
             "examples": [
@@ -26,11 +28,13 @@ class Customer_In(BaseModel):
             ]
         }
     }
+    '''
 
 class Customer_Out(BaseModel):
     id: int
     customer: Customer_In
 
+    '''
     model_config = {
         "json_schema_extra": {
             "examples": [
@@ -44,6 +48,7 @@ class Customer_Out(BaseModel):
             ]
         }
     }
+    '''
 
 
 
