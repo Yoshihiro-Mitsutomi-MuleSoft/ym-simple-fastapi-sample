@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Path
 from pydantic import BaseModel
 from typing import Annotated
-import asyncio
+import uvicorn
 
 app = FastAPI(root_path="/api/v1")
 
@@ -114,3 +114,6 @@ async def delete_item(
     idx2delete = customer_id - 1
     wkItems.pop(idx2delete)
     return {"message": "Data Deletion has been completed. (warning) ID is reorganized"}
+
+if __name__ == '__main__':
+    uvicorn.run(app, port=8080, host='0.0.0.0')
